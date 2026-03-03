@@ -9,9 +9,22 @@
 </head>
 <body>
   <div class="wrap">
-    <section class="card">
-      <h1>CyberQuest - Terminal Scouts</h1>
-      <div class="subtitle">Auf Spurensuche im System</div>
+    <section class="card header-card">
+      <div class="header-top">
+        <div class="title-block">
+          <h1>CyberQuest - Terminal Scouts</h1>
+          <div class="subtitle">Auf Spurensuche im System</div>
+        </div>
+        <div class="utility-controls">                    
+          <select id="themeSelect" aria-label="Design-Thema">
+            <option value="ocean">Mission Blau</option>
+            <option value="cyberpunk">Cyberpunk Neon</option>
+            <option value="sunset">Solar Drift</option>
+          </select>
+          <button id="musicBtn" type="button" title="Musik umschalten">♪ Aus</button>
+          <button id="restartBtn" type="button" title="Spiel neu starten">↺</button>
+        </div>
+      </div>
       <div class="hud">
         <div class="pill"><b id="roleLabel">Analyst:</b> <span id="agentName">Analyst</span></div>
         <div class="pill"><b>Level:</b> <span id="levelName">-</span></div>
@@ -22,23 +35,9 @@
           <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
         </div>
       </div>
-      <div class="name-controls">
-        
-        <div class="utility-controls">
-          
-          
-        <select id="themeSelect" aria-label="Design-Thema">
-          <option value="ocean">Mission Blau</option>
-          <option value="cyberpunk">Cyberpunk Neon</option>
-          <option value="sunset">Solar Drift</option>
-        </select>
-        <button id="musicBtn" type="button" title="Musik umschalten">♪ Aus</button>
-        <button id="restartBtn" type="button" title="Spiel neu starten">↺</button>
-        </div>
-      </div>
     </section>
 
-    <section class="card">
+    <section class="card mission-card">
       <div id="story"></div>
       <div id="ethics" class="ethics-box"></div>
       <div class="onboarding-toolbar">
@@ -47,11 +46,11 @@
       <div id="onboarding" class="onboarding-box" aria-live="polite"></div>
     </section>
 
-    <section class="card">
+    <section class="card terminal-card">
       <div id="out" aria-live="polite"></div>
-      <input id="cmd" autocomplete="off" placeholder="Befehl eingeben, z. B. ls" />
-      <div class="action-row"><button id="hintBtn" type="button">Tipp</button></div>
+      <input id="cmd" autocomplete="on" placeholder="Befehl eingeben, z. B. ls" />
       <div class="tips" id="tipsLine"></div>
+      <div class="action-row"><button id="hintBtn" type="button">Tipp</button></div>
     </section>
   </div>
   <footer class="site-footer">
