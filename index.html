@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CyberQuest - Terminal Scouts</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <section class="card">
+      <h1>CyberQuest - Terminal Scouts</h1>
+      <div class="subtitle">Auf Spurensuche im System</div>
+      <div class="hud">
+        <div class="pill"><b id="roleLabel">Analyst:</b> <span id="agentName">Analyst</span></div>
+        <div class="pill"><b>Level:</b> <span id="levelName">-</span></div>
+        <div class="pill progress-pill">
+          <div class="progress-meta">
+            <b>Fortschritt:</b> <span id="progressText">0%</span>
+          </div>
+          <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+        </div>
+      </div>
+      <div class="name-controls">
+        
+        <div class="utility-controls">
+          
+          
+        <select id="themeSelect" aria-label="Design-Thema">
+          <option value="ocean">Mission Blau</option>
+          <option value="cyberpunk">Cyberpunk Neon</option>
+          <option value="sunset">Solar Drift</option>
+        </select>
+        <button id="musicBtn" type="button" title="Musik umschalten">♪ Aus</button>
+        <button id="restartBtn" type="button" title="Spiel neu starten">↺</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div id="story"></div>
+      <div id="ethics" class="ethics-box"></div>
+      <div class="onboarding-toolbar">
+        <button id="onboardingToggleBtn" type="button">Lernhilfe: Aus</button>
+      </div>
+      <div id="onboarding" class="onboarding-box" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <div id="out" aria-live="polite"></div>
+      <input id="cmd" autocomplete="off" placeholder="Befehl eingeben, z. B. ls" />
+      <div class="action-row"><button id="hintBtn" type="button">Tipp</button></div>
+      <div class="tips" id="tipsLine"></div>
+    </section>
+  </div>
+
+  <script type="module" src="src/game.js"></script>
+</body>
+</html>
