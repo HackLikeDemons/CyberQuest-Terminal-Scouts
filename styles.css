@@ -68,6 +68,25 @@ body {
   min-height: 100vh;
 }
 
+.site-footer {
+  text-align: center;
+  padding: 6px 12px 14px;
+  font-size: 0.78rem;
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+  opacity: 0.82;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+  color: var(--accent);
+  text-decoration: underline;
+  opacity: 1;
+}
+
 .wrap {
   max-width: 980px;
   margin: 0 auto;
