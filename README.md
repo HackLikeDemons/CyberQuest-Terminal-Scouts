@@ -18,14 +18,14 @@ CyberQuest: Terminal Scouts ist ein browserbasiertes Lernspiel für 9- bis 12-J�
 
 ## Lokal starten (ohne Deployment)
 
-Da ES-Module genutzt werden, bitte ueber einen lokalen Webserver starten:
+Da ES-Module genutzt werden, bitte über einen lokalen Webserver starten:
 
 ```bash
 cd /Users/awienes/code/cyberquest
 python3 -m http.server 8080
 ```
 
-Dann im Browser oeffnen:
+Dann im Browser öffnen:
 
 - `http://localhost:8080`
 
@@ -55,5 +55,5 @@ Lizenzangaben und Quellen stehen in `assets/music/music-licence.md`.
 Der Quellcode dieses Projekts steht unter der Apache License 2.0.
 Siehe `LICENSE`.
 
-Hinweis: Musikdateien in `assets/music/` koennen abweichende Drittanbieter-Lizenzen haben.
+Hinweis: Musikdateien in `assets/music/` können abweichende Drittanbieter-Lizenzen haben.
 Details stehen in `assets/music/music-licence.md`.

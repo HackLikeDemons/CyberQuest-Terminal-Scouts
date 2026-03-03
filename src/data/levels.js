@@ -9,7 +9,7 @@ export const LEVELS = [
     id: 0,
     title: "Level 1 - Rufname",
     briefing: "Deine Aufgabe: Setze deinen Analystennamen direkt im Terminal.",
-    objective: "Nutze <code>setname DEINNAME</code> und bestaetige danach mit <code>unlock BEREIT</code>.",
+    objective: "Nutze <code>setname DEINNAME</code> und bestätige danach mit <code>unlock BEREIT</code>.",
     allowed: ["help", "story", "man", "setname", "clear", "unlock", "hint"],
     learningCommands: ["setname"],
     startCwd: "/",
@@ -21,8 +21,8 @@ export const LEVELS = [
     introText: "Frau Weber sagt: 'Richte zuerst dein Profil ein, dann starten wir die erste Analyse.'",
     successText: "Profil aktiv. Ben nickt: 'Okay, du bist offiziell im Cyber-Labor dabei.'",
     knowledgeCard: {
-      title: "Identitaet im System",
-      text: "Mit setname gibst du dir als Analyst einen Namen. In echten Systemen hilft eine klare Identitaet bei Teamarbeit und Sicherheit.",
+      title: "Identität im System",
+      text: "Mit setname gibst du dir als Analyst einen Namen. In echten Systemen hilft eine klare Identität bei Teamarbeit und Sicherheit.",
       example: "setname Andi"
     },
     unlockRule: {
@@ -50,14 +50,14 @@ export const LEVELS = [
     knowledgeCard: {
       title: "Ordner und Dateien",
       text: "Ordner enthalten Dateien und weitere Ordner. Mit cd wechselst du den Ort, mit cat liest du Inhalte.",
-      example: "cd desktop && cat hinweis.txt"
+      example: "cd ordner1, dann cat hinweis.txt"
     },
     unlockRequirements: [
-      { type: "flag", key: "cat", value: "/desktop/hinweis.txt" }
+      { type: "flag", key: "cat", value: "/ordner1/hinweis.txt" }
     ],
-    unlockHint: "Lies zuerst die Datei /desktop/hinweis.txt mit cat.",
-    hints: ["Starte mit ls.", "Gehe mit cd in den Ordner desktop.", "Lies hinweis.txt mit cat."],
-    fs: { "/": { type: "dir", children: { desktop: { type: "dir", children: { "hinweis.txt": { type: "file", content: "CODE: MONDSTEIN" } } }, "start.txt": { type: "file", content: "Willkommen! Kurzbefehl: help" } } } }
+    unlockHint: "Lies zuerst die Datei /ordner1/hinweis.txt mit cat.",
+    hints: ["Starte mit ls.", "Gehe mit cd in den Ordner ordner1.", "Lies hinweis.txt mit cat."],
+    fs: { "/": { type: "dir", children: { ordner1: { type: "dir", children: { "hinweis.txt": { type: "file", content: "CODE: MONDSTEIN" } } }, "start.txt": { type: "file", content: "Willkommen! Schau mal in den Ordner rein oder benutze den Befehl: help" } } } }
   },
   {
     id: 2,
@@ -82,7 +82,7 @@ export const LEVELS = [
       { type: "flag", key: "cat", value: "/basis/raum/karte.txt" }
     ],
     unlockHint: "Finde und lies zuerst die Datei /basis/raum/karte.txt.",
-    hints: ["pwd zeigt, wo du bist.", "Nutze cd .. fuer einen Schritt zurueck.", "Dann weiter in den Ordner raum."],
+    hints: ["pwd zeigt, wo du bist.", "Nutze cd .. für einen Schritt zurück.", "Dann weiter in den Ordner raum."],
     fs: { "/": { type: "dir", children: { basis: { type: "dir", children: { raum: { type: "dir", children: { "karte.txt": { type: "file", content: "CODE: KOMET" } } }, "hinweis.txt": { type: "file", content: "Der Code ist tiefer im System." } } } } } }
   },
   {
@@ -97,9 +97,9 @@ export const LEVELS = [
     points: 140,
     chapterId: "kapitel-2",
     chapterTitle: "Kapitel 2 - Spuren in Logdateien",
-    chapterIntro: "Im Schulnetz mehren sich die Zwischenfaelle: Ankuendigungen springen, Dateien verschwinden kurz und tauchen wieder auf. Frau Weber ordnet Alarmstufe Gelb fuer das Cyber-Labor an.",
-    introText: "Zwischen normalen Logzeilen blinkt ploetzlich eine Nachricht auf: 'Findet mich, wenn ihr koennt. - Digitalschatten'.",
-    successText: "Codezeile gesichert. Ben fluestert: 'Das war kein Zufall. Jemand beobachtet unsere Schritte.'",
+    chapterIntro: "Im Schulnetz mehren sich die Zwischenfälle: Ankündigungen springen, Dateien verschwinden kurz und tauchen wieder auf. Frau Weber ordnet Alarmstufe Gelb für das Cyber-Labor an.",
+    introText: "Zwischen normalen Logzeilen blinkt plötzlich eine Nachricht auf: 'Findet mich, wenn ihr könnt. - Digitalschatten'.",
+    successText: "Codezeile gesichert. Ben flüstert: 'Das war kein Zufall. Jemand beobachtet unsere Schritte.'",
     knowledgeCard: {
       title: "Suchen mit grep",
       text: "grep filtert Zeilen nach einem Suchwort. So findest du in langen Logs schnell wichtige Hinweise.",
@@ -109,29 +109,29 @@ export const LEVELS = [
       { type: "flag", key: "grep-term", value: "/logs/log.txt|CODE:" }
     ],
     unlockHint: "Nutze zuerst grep mit CODE: in /logs/log.txt.",
-    hints: ["Befehl: grep CODE: log.txt", "Nur eine Zeile enthaelt CODE:"],
+    hints: ["Befehl: grep CODE: log.txt", "Nur eine Zeile enthält CODE:"],
     fs: { "/": { type: "dir", children: { logs: { type: "dir", children: { "log.txt": { type: "file", content: [
       "08:00:01 INFO Startsequenz beginnt",
       "08:00:02 INFO Modul Auth geladen",
-      "08:00:04 INFO Modul Benutzeroberflaeche geladen",
+      "08:00:04 INFO Modul Benutzeroberfläche geladen",
       "08:00:07 WARN Sensor A12 instabil",
       "08:00:10 INFO Wiederverbindung Versuch 1",
       "08:00:12 INFO Wiederverbindung Versuch 2",
       "08:00:14 INFO Wiederverbindung erfolgreich",
-      "08:00:16 INFO Cache-Aufwaermung startet",
-      "08:00:18 INFO Cache-Aufwaermung abgeschlossen",
+      "08:00:16 INFO Cache-Aufwärmung startet",
+      "08:00:18 INFO Cache-Aufwärmung abgeschlossen",
       "08:00:20 WARN Unbekanntes Paket verworfen",
       "08:00:23 INFO Test-Anmeldung erfolgreich",
       "08:00:25 INFO Admin-Anmeldung abgelehnt",
-      "08:00:28 INFO Pruefung laeuft",
-      "08:00:31 INFO Pruefung abgeschlossen",
-      "08:00:33 WARN Aufraeumen temp-Dateien verzoegert",
-      "08:00:36 INFO Aufraeumen abgeschlossen",
+      "08:00:28 INFO Prüfung läuft",
+      "08:00:31 INFO Prüfung abgeschlossen",
+      "08:00:33 WARN Aufräumen temp-Dateien verzögert",
+      "08:00:36 INFO Aufräumen abgeschlossen",
       "08:00:38 INFO Sicherung Block 1 abgeschlossen",
       "08:00:40 INFO Sicherung Block 2 abgeschlossen",
       "08:00:42 INFO Sicherung Block 3 abgeschlossen",
       "08:00:45 CODE: GLUEHWURM",
-      "08:00:47 INFO Ueberwachung aktiviert",
+      "08:00:47 INFO Überwachung aktiviert",
       "08:00:49 INFO Herzschlag ok",
       "08:00:52 INFO Sitzung beendet"
     ].join("\n") } } } } } }
@@ -148,7 +148,7 @@ export const LEVELS = [
     points: 160,
     chapterId: "kapitel-2",
     chapterTitle: "Kapitel 2 - Spuren in Logdateien",
-    introText: "Im Serverraum ist alles auffaellig sauber. Ben tippt auf versteckte Dateien als geheimer Ablageort.",
+    introText: "Im Serverraum ist alles auffällig sauber. Ben tippt auf versteckte Dateien als geheimer Ablageort.",
     successText: "Treffer in der versteckten Datei. Darin steht nur: 'Ihr seid nah dran.'",
     knowledgeCard: {
       title: "Versteckte Dateien",
@@ -175,8 +175,8 @@ export const LEVELS = [
     points: 170,
     chapterId: "kapitel-2",
     chapterTitle: "Kapitel 2 - Spuren in Logdateien",
-    introText: "Die Zwischenfaelle folgen einem Muster im Zeitverlauf. Wenn ihr es nicht erkennt, geht die naechste Schulankuendigung wieder schief.",
-    successText: "Muster erkannt. Frau Weber: 'Gut reagiert. Wir waren nur Minuten von der naechsten Panne entfernt.'",
+    introText: "Die Zwischenfälle folgen einem Muster im Zeitverlauf. Wenn ihr es nicht erkennt, geht die nächste Schulankündigung wieder schief.",
+    successText: "Muster erkannt. Frau Weber: 'Gut reagiert. Wir waren nur Minuten von der nächsten Panne entfernt.'",
     knowledgeCard: {
       title: "Lange Logdateien lesen",
       text: "head zeigt den Anfang, tail das Ende einer Datei. Das spart Zeit bei sehr langen Protokollen.",
@@ -204,8 +204,8 @@ export const LEVELS = [
       "00:08 INFO Zeitsync erfolgreich",
       "00:10 INFO Cache geleert",
       "00:12 INFO Cache neu aufgebaut",
-      "00:14 INFO Login pruefen gestartet",
-      "00:16 INFO Login pruefen beendet",
+      "00:14 INFO Login prüfen gestartet",
+      "00:16 INFO Login prüfen beendet",
       "00:18 WARN Paketverlust kurzzeitig",
       "00:20 INFO Verbindung stabil",
       "00:22 INFO Sicherung Abschnitt 1 fertig",
@@ -214,20 +214,20 @@ export const LEVELS = [
       "00:28 INFO Sicherung Abschnitt 4 fertig",
       "00:30 INFO Sicherheitsscan gestartet",
       "00:32 INFO Sicherheitsscan abgeschlossen",
-      "00:34 WARN Ungewoehnlicher Zugriff blockiert",
+      "00:34 WARN Ungewöhnlicher Zugriff blockiert",
       "00:36 INFO Monitoring aktiv",
       "00:38 INFO Temperatur normal",
-      "00:40 INFO Speicherpruefung gestartet",
-      "00:42 INFO Speicherpruefung abgeschlossen",
+      "00:40 INFO Speicherprüfung gestartet",
+      "00:42 INFO Speicherprüfung abgeschlossen",
       "00:44 INFO Protokollrotation vorbereitet",
       "00:46 INFO Protokollrotation aktiv",
       "00:48 INFO Heartbeat ok",
       "00:50 INFO Heartbeat ok",
       "00:52 INFO Heartbeat ok",
-      "00:54 INFO Teamstatus gruen",
-      "00:56 INFO Letzte Pruefung laeuft",
+      "00:54 INFO Teamstatus grün",
+      "00:56 INFO Letzte Prüfung läuft",
       "00:58 CODE: FEUERFLUG",
-      "01:00 INFO Letzte Pruefung abgeschlossen",
+      "01:00 INFO Letzte Prüfung abgeschlossen",
       "01:02 INFO Dienst bleibt aktiv"
     ].join("\n") } } } } } }
   },
@@ -243,12 +243,12 @@ export const LEVELS = [
     points: 190,
     chapterId: "kapitel-3",
     chapterTitle: "Kapitel 3 - Der Digitalschatten testet euch",
-    chapterIntro: "Der Digitalschatten meldet sich direkt: 'Wer das Labor schuetzen will, muss unter Druck sauber arbeiten.' Jetzt startet sein Testparcours.",
+    chapterIntro: "Der Digitalschatten meldet sich direkt: 'Wer das Labor schützen will, muss unter Druck sauber arbeiten.' Jetzt startet sein Testparcours.",
     introText: "Auf dem Bildschirm erscheint ein Countdown. Erste Challenge: baue in kurzer Zeit eine saubere Struktur.",
-    successText: "Challenge bestanden. Sofort ploppt die naechste Nachricht auf: 'Schnell reicht nicht. Jetzt pruefe ich eure Genauigkeit.'",
+    successText: "Challenge bestanden. Sofort ploppt die nächste Nachricht auf: 'Schnell reicht nicht. Jetzt prüfe ich eure Genauigkeit.'",
     knowledgeCard: {
       title: "Struktur aufbauen",
-      text: "mkdir erstellt Ordner, touch erstellt Dateien. Gute Struktur macht Systeme uebersichtlich.",
+      text: "mkdir erstellt Ordner, touch erstellt Dateien. Gute Struktur macht Systeme übersichtlich.",
       example: "mkdir mission && touch mission/notiz.txt"
     },
     unlockRule: {
@@ -290,8 +290,8 @@ export const LEVELS = [
   },
   {
     id: 8,
-    title: "Level 9 - Schreiben Und Aufraeumen",
-    briefing: "Deine Aufgabe: Schreibe Text in eine Datei und raeume auf.",
+    title: "Level 9 - Schreiben Und Aufräumen",
+    briefing: "Deine Aufgabe: Schreibe Text in eine Datei und räume auf.",
     objective: "Nutze <code>echo ... > code.txt</code>. Entferne danach <code>muell.txt</code> mit Sicherheitsabfrage.",
     allowed: ["help", "story", "pwd", "ls", "cd", "cat", "echo", "rm", "clear", "unlock", "hint"],
     learningCommands: ["echo >", "rm"],
@@ -300,11 +300,11 @@ export const LEVELS = [
     points: 230,
     chapterId: "kapitel-3",
     chapterTitle: "Kapitel 3 - Der Digitalschatten testet euch",
-    introText: "Der Digitalschatten zwingt euch zur Entscheidung: Was ist wichtig, was darf weg? Ein Fehler loescht Beweise.",
+    introText: "Der Digitalschatten zwingt euch zur Entscheidung: Was ist wichtig, was darf weg? Ein Fehler löscht Beweise.",
     successText: "Richtige Entscheidung getroffen. Frau Weber: 'Genau so verhindert man echte Sicherheitschaos-Momente.'",
     knowledgeCard: {
-      title: "Schreiben und aufraeumen",
-      text: "echo > schreibt direkt in eine Datei. Mit rm entfernst du unnoetige Dateien gezielt.",
+      title: "Schreiben und aufräumen",
+      text: "echo > schreibt direkt in eine Datei. Mit rm entfernst du unnötige Dateien gezielt.",
       example: "echo CODE: BLAUWOLF > code.txt"
     },
     unlockRequirements: [
@@ -312,8 +312,8 @@ export const LEVELS = [
       { type: "fileMissing", path: "/desk/muell.txt" }
     ],
     unlockHint: "Erstelle zuerst code.txt mit echo und entferne danach muell.txt.",
-    hints: ["echo CODE: BLAUWOLF > code.txt", "cat code.txt", "rm muell.txt und bestaetigen."],
-    fs: { "/": { type: "dir", children: { desk: { type: "dir", children: { "muell.txt": { type: "file", content: "Loesch mich." } } } } } }
+    hints: ["echo CODE: BLAUWOLF > code.txt", "cat code.txt", "rm muell.txt und bestätigen."],
+    fs: { "/": { type: "dir", children: { desk: { type: "dir", children: { "muell.txt": { type: "file", content: "Lösch mich." } } } } } }
   },
   {
     id: 9,
@@ -327,11 +327,11 @@ export const LEVELS = [
     points: 250,
     chapterId: "kapitel-3",
     chapterTitle: "Kapitel 3 - Der Digitalschatten testet euch",
-    introText: "Letzte Pruefung vor dem Finale: Rechte setzen unter Druck. Zu offen ist unsicher, zu streng blockiert das Team.",
+    introText: "Letzte Prüfung vor dem Finale: Rechte setzen unter Druck. Zu offen ist unsicher, zu streng blockiert das Team.",
     successText: "Rechte korrekt. Auf dem Terminal erscheint: 'Treffpunkt Finale. Prozessliste lesen.'",
     knowledgeCard: {
       title: "Rechte verstehen",
-      text: "chmod steuert, was mit einer Datei erlaubt ist. Rechte schuetzen Daten vor ungewolltem Zugriff.",
+      text: "chmod steuert, was mit einer Datei erlaubt ist. Rechte schützen Daten vor ungewolltem Zugriff.",
       example: "chmod 644 /tresor/code.txt"
     },
     unlockRequirements: [
@@ -354,9 +354,9 @@ export const LEVELS = [
     points: 280,
     chapterId: "kapitel-4",
     chapterTitle: "Kapitel 4 - Finale: Der Digitalschatten",
-    chapterIntro: "Das ganze Labor ist still. Nur ein System laeuft noch. Dort liegt die letzte Spur zum Digitalschatten.",
+    chapterIntro: "Das ganze Labor ist still. Nur ein System läuft noch. Dort liegt die letzte Spur zum Digitalschatten.",
     introText: "Frau Weber sagt leise: 'Das ist der Moment. Finde heraus, wer hinter allem steckt.'",
-    successText: "Aufloesung: Der Digitalschatten war ein aelterer Schueler und frueherer Cyber-Club-Leiter. Er wollte testen, ob ihr Verantwortung uebernehmt und nicht Chaos ausloest.",
+    successText: "Auflösung: Der Digitalschatten war ein älterer Schüler und früherer Cyber-Club-Leiter. Er wollte testen, ob ihr Verantwortung übernehmt und nicht Chaos auslöst.",
     knowledgeCard: {
       title: "Prozesse beobachten",
       text: "ps zeigt laufende Programme. In der Praxis hilft das bei Fehlersuche und Sicherheitschecks.",
@@ -365,7 +365,7 @@ export const LEVELS = [
     unlockRequirements: [
       { type: "flag", key: "ps" }
     ],
-    unlockHint: "Fuehre zuerst den Befehl ps aus.",
+    unlockHint: "Führe zuerst den Befehl ps aus.",
     hints: ["Tippe ps.", "In einer Zeile steht CODE: ..."],
     processes: [
       "PID  NAME           STATUS",

@@ -46,7 +46,7 @@ const music = {
 const MAN_PAGES = {
   help: {
     title: "HELP(1)",
-    purpose: "zeigt die verfuegbaren Befehle im aktuellen Level",
+    purpose: "zeigt die verfügbaren Befehle im aktuellen Level",
     usage: "help",
     examples: ["help"]
   },
@@ -124,7 +124,7 @@ const MAN_PAGES = {
   },
   rm: {
     title: "RM(1)",
-    purpose: "loescht eine Datei (mit Sicherheitsabfrage)",
+    purpose: "löscht eine Datei (mit Sicherheitsabfrage)",
     usage: "rm DATEI | rm --ja DATEI",
     examples: ["rm muell.txt", "rm --ja muell.txt"]
   },
@@ -155,13 +155,13 @@ const MAN_PAGES = {
   },
   unlock: {
     title: "UNLOCK(1)",
-    purpose: "prueft dein gefundenes Passwort",
+    purpose: "prüft dein gefundenes Passwort",
     usage: "unlock PASSWORT",
     examples: ["unlock MONDSTEIN"]
   },
   hint: {
     title: "HINT(1)",
-    purpose: "zeigt den naechsten Tipp",
+    purpose: "zeigt den nächsten Tipp",
     usage: "hint",
     examples: ["hint"]
   },
@@ -185,7 +185,7 @@ const MAN_PAGES = {
   },
   nexttrack: {
     title: "NEXTTRACK(1)",
-    purpose: "springt zum naechsten Musiktitel",
+    purpose: "springt zum nächsten Musiktitel",
     usage: "nexttrack",
     examples: ["nexttrack"]
   },
@@ -198,11 +198,11 @@ const MAN_PAGES = {
 };
 
 const ETHICS_RULES = [
-  "Nur auf Systemen arbeiten, fuer die du ausdruecklich die Erlaubnis hast.",
-  "Logs helfen beim Aufklaeren von Vorfaellen und beim Schutz von Systemen.",
-  "Keine Daten loeschen oder veraendern, wenn es nicht Teil der Aufgabe ist.",
+  "Nur auf Systemen arbeiten, für die du ausdrücklich die Erlaubnis hast.",
+  "Logs helfen beim Aufklären von Vorfällen und beim Schutz von Systemen.",
+  "Keine Daten löschen oder verändern, wenn es nicht Teil der Aufgabe ist.",
   "Gefundene Sicherheitsprobleme verantwortungsvoll melden statt ausnutzen.",
-  "Starke Passwoerter und klare Regeln schuetzen dich und andere."
+  "Starke Passwörter und klare Regeln schützen dich und andere."
 ];
 
 const TITLE_STEPS = [
@@ -320,7 +320,7 @@ function buildOnboardingSteps(level) {
     return [
       { label: "Tippe help", done: hasAction(state.actionState, "help") },
       { label: "Setze deinen Namen: setname DEINNAME", done: hasAction(state.actionState, "setname") },
-      { label: "Bestaetige mit unlock BEREIT", done: false }
+      { label: "Bestätige mit unlock BEREIT", done: false }
     ];
   }
 
@@ -357,7 +357,7 @@ function renderOnboarding() {
   onboardingEl.innerHTML =
     `<div class="onboarding-title">Start-Hilfe</div>` +
     `<ul class="onboarding-list">${listHtml}</ul>` +
-    `<div class="onboarding-next"><b>Naechster Schritt:</b> ${nextLine}</div>` +
+    `<div class="onboarding-next"><b>Nächster Schritt:</b> ${nextLine}</div>` +
     (unlockHint ? `<div class="muted">Unlock-Hinweis: ${unlockHint}</div>` : "");
 }
 
@@ -422,11 +422,11 @@ function ensureAudioPlayer() {
     const idx = music.playlist.moveNext();
     const ok = await playLicensedTrack(idx);
     if (ok) {
-      print(`Jetzt laeuft: ${currentTrackTitle()}`, "muted");
+      print(`Jetzt läuft: ${currentTrackTitle()}`, "muted");
       return;
     }
     const recovered = await tryStartLicensedPlaylist();
-    if (recovered) print(`Jetzt laeuft: ${currentTrackTitle()}`, "muted");
+    if (recovered) print(`Jetzt läuft: ${currentTrackTitle()}`, "muted");
   });
   music.audioEl = audio;
 }
@@ -542,9 +542,9 @@ function startLevel(index, options = {}) {
       print(`=== ${lvl.chapterTitle || "Neues Kapitel"} ===`, "accent");
       if (lvl.chapterIntro) print(lvl.chapterIntro, "muted");
     }
-    print(`Neue Mission fuer ${playerAddress()}: ${lvl.title}`, "ok");
+    print(`Neue Mission für ${playerAddress()}: ${lvl.title}`, "ok");
     if (lvl.introText) print(lvl.introText, "muted");
-    print(`${playerAddress()}, tippe help fuer alle Befehle.`, "muted");
+    print(`${playerAddress()}, tippe help für alle Befehle.`, "muted");
     if (index === 0) printOnboardingWelcome();
   }
   persistState();
@@ -578,7 +578,7 @@ function restoreProgress(saved) {
   if (saved.migratedFromOldContent) {
     print("Spielstand wurde an die neue Level-Version angepasst.", "muted");
   }
-  print(`Willkommen zurueck, ${playerAddress()}! Spielstand geladen.`, "ok");
+  print(`Willkommen zurück, ${playerAddress()}! Spielstand geladen.`, "ok");
   if (state.levelIndex === 0 && !hasAction(state.actionState, "setname")) {
     printOnboardingWelcome();
   }
@@ -656,8 +656,8 @@ function explainMissingFlag(rule) {
   }
   if (key === "head" || key === "tail") return `Schau zuerst mit ${key} in ${value}.`;
   if (key === "chmod") return "Setze zuerst die geforderten Rechte mit chmod.";
-  if (key === "ps") return "Fuehre zuerst ps aus.";
-  return "Fuehre zuerst den geforderten Befehl aus.";
+  if (key === "ps") return "Führe zuerst ps aus.";
+  return "Führe zuerst den geforderten Befehl aus.";
 }
 
 function explainRuleFailure(rule) {
@@ -670,24 +670,24 @@ function explainRuleFailure(rule) {
     case "fileExists":
       return `Erstelle zuerst die Datei ${rule.path}.`;
     case "fileMissing":
-      return `Raeume auf: ${rule.path} sollte nicht mehr vorhanden sein.`;
+      return `Räume auf: ${rule.path} sollte nicht mehr vorhanden sein.`;
     case "fileContains":
       return `In ${rule.path} fehlt noch der richtige Inhalt.`;
     case "modeEquals":
       return `Setze zuerst die Rechte ${rule.mode} auf ${rule.path}.`;
     case "anyOf": {
       if (!Array.isArray(rule.failures) || !rule.failures.length) {
-        return "Es fehlt noch mindestens einer von mehreren moeglichen Schritten.";
+        return "Es fehlt noch mindestens einer von mehreren möglichen Schritten.";
       }
       const options = rule.failures
         .map((f) => explainRuleFailure(f))
         .filter(Boolean)
         .slice(0, 2);
-      if (!options.length) return "Es fehlt noch mindestens einer von mehreren moeglichen Schritten.";
+      if (!options.length) return "Es fehlt noch mindestens einer von mehreren möglichen Schritten.";
       return `Noch nicht ganz: ${options.join(" ODER ")}`;
     }
     case "not":
-      return "Dieser Schritt darf fuer das Entsperren nicht erfuellt sein.";
+      return "Dieser Schritt darf für das Entsperren nicht erfüllt sein.";
     default:
       return null;
   }
@@ -740,7 +740,7 @@ function cmdSetName(arg) {
 }
 
 function cmdEthik() {
-  print("Ethik-Regeln fuer CyberQuest:", "accent");
+  print("Ethik-Regeln für CyberQuest:", "accent");
   ETHICS_RULES.forEach((rule, idx) => print(`${idx + 1}. ${rule}`));
 }
 
@@ -770,7 +770,7 @@ function scoreForLevelStart(levelIndex) {
 
 function cmdJump(arg) {
   const idx = parseJumpPassword(arg);
-  if (idx < 0) return print("Ungueltiges Sprungpasswort. Beispiel: jump LEVEL3", "warn");
+  if (idx < 0) return print("Ungültiges Sprungpasswort. Beispiel: jump LEVEL3", "warn");
   if (idx === state.levelIndex) return print("Du bist bereits in diesem Level.", "muted");
 
   state.score = scoreForLevelStart(idx);
@@ -786,7 +786,7 @@ async function cmdNextTrack() {
     return;
   }
   if (!state.musicEnabled) {
-    print("Musik ist aus. Starte sie zuerst ueber den Musik-Button.", "warn");
+    print("Musik ist aus. Starte sie zuerst über den Musik-Button.", "warn");
     return;
   }
 
@@ -795,16 +795,16 @@ async function cmdNextTrack() {
   if (!ok) {
     const recovered = await tryStartLicensedPlaylist();
     if (!recovered) {
-      print("Der naechste Track konnte nicht geladen werden.", "err");
+      print("Der nächste Track konnte nicht geladen werden.", "err");
       return;
     }
-    print(`Naechster Track: ${currentTrackTitle()}`, "ok");
+    print(`Nächster Track: ${currentTrackTitle()}`, "ok");
     return;
   }
 
   music.mode = "audio";
   updateMusicButton();
-  print(`Naechster Track: ${currentTrackTitle()}`, "ok");
+  print(`Nächster Track: ${currentTrackTitle()}`, "ok");
 }
 
 function resetProgress() {
@@ -827,7 +827,7 @@ function stopMusicPlayback() {
 
 function restartGame(force = false) {
   if (!force) {
-    const ok = window.confirm("Wirklich neu starten? Dein Fortschritt wird zurueckgesetzt.");
+    const ok = window.confirm("Wirklich neu starten? Dein Fortschritt wird zurückgesetzt.");
     if (!ok) return;
   }
 
@@ -917,11 +917,11 @@ function cmdMan(arg) {
   if (!topic) {
     const topics = Object.keys(MAN_PAGES).sort().join(", ");
     print("Nutzung: man THEMA", "warn");
-    print("Verfuegbare Themen: " + topics);
+    print("Verfügbare Themen: " + topics);
     return;
   }
   const page = MAN_PAGES[topic];
-  if (!page) return print(`Keine Mini-Manpage fuer '${topic}' gefunden.`, "err");
+  if (!page) return print(`Keine Mini-Manpage für '${topic}' gefunden.`, "err");
   markAction("man", topic);
   print(page.title, "accent");
   print("ZWECK");
@@ -1027,7 +1027,7 @@ function cmdMkdir(arg) {
   if (!arg) return print("Nutzung: mkdir ORDNER", "warn");
   const path = resolvePath(arg);
   const meta = ensureParentDir(path);
-  if (!meta) return print("Ordnerpfad ungueltig.", "err");
+  if (!meta) return print("Ordnerpfad ungültig.", "err");
   if (meta.parent.children[meta.name]) return print("Ordner oder Datei existiert bereits.", "err");
   meta.parent.children[meta.name] = { type: "dir", children: {} };
   markAction("mkdir", path);
@@ -1039,7 +1039,7 @@ function cmdTouch(arg) {
   if (!arg) return print("Nutzung: touch DATEI", "warn");
   const path = resolvePath(arg);
   const meta = ensureParentDir(path);
-  if (!meta) return print("Dateipfad ungueltig.", "err");
+  if (!meta) return print("Dateipfad ungültig.", "err");
   const existing = meta.parent.children[meta.name];
   if (existing && existing.type === "dir") return print("Ein Ordner hat bereits diesen Namen.", "err");
   if (!existing) {
@@ -1059,7 +1059,7 @@ function cmdCp(argString) {
   if (!source || source.type !== "file") return print("Quelle nicht gefunden oder kein Datei-Typ.", "err");
   const targetPath = resolvePath(args[1]);
   const meta = ensureParentDir(targetPath);
-  if (!meta) return print("Zielpfad ungueltig.", "err");
+  if (!meta) return print("Zielpfad ungültig.", "err");
   meta.parent.children[meta.name] = { type: "file", content: source.content, mode: source.mode || "644" };
   markAction("cp", targetPath);
   persistState();
@@ -1071,12 +1071,12 @@ function cmdMv(argString) {
   if (args.length !== 2) return print("Nutzung: mv QUELLE ZIEL", "warn");
   const sourcePath = resolvePath(args[0]);
   const sourceMeta = ensureParentDir(sourcePath);
-  if (!sourceMeta) return print("Quellpfad ungueltig.", "err");
+  if (!sourceMeta) return print("Quellpfad ungültig.", "err");
   const sourceNode = sourceMeta.parent.children[sourceMeta.name];
   if (!sourceNode || sourceNode.type !== "file") return print("Quelle nicht gefunden oder kein Datei-Typ.", "err");
   const targetPath = resolvePath(args[1]);
   const targetMeta = ensureParentDir(targetPath);
-  if (!targetMeta) return print("Zielpfad ungueltig.", "err");
+  if (!targetMeta) return print("Zielpfad ungültig.", "err");
   targetMeta.parent.children[targetMeta.name] = sourceNode;
   delete sourceMeta.parent.children[sourceMeta.name];
   markAction("mv", targetPath);
@@ -1096,7 +1096,7 @@ function cmdRm(argString) {
   if (!targetArg) return print("Nutzung: rm --ja DATEI", "warn");
   const targetPath = resolvePath(targetArg);
   const meta = ensureParentDir(targetPath);
-  if (!meta) return print("Dateipfad ungueltig.", "err");
+  if (!meta) return print("Dateipfad ungültig.", "err");
   const node = meta.parent.children[meta.name];
   if (!node || node.type !== "file") return print("Datei nicht gefunden.", "err");
   if (!force) {
@@ -1104,13 +1104,13 @@ function cmdRm(argString) {
     return print(`Sicher? Tippe: rm --ja ${targetArg}`, "warn");
   }
   if (state.pendingRemove && state.pendingRemove !== targetPath) {
-    return print("Bitte bestaetige zuerst die zuletzt angefragte Loeschung.", "warn");
+    return print("Bitte bestätige zuerst die zuletzt angefragte Löschung.", "warn");
   }
   delete meta.parent.children[meta.name];
   state.pendingRemove = null;
   markAction("rm", targetPath);
   persistState();
-  print("Datei geloescht.", "ok");
+  print("Datei gelöscht.", "ok");
 }
 
 function cmdEcho(rawInput) {
@@ -1122,7 +1122,7 @@ function cmdEcho(rawInput) {
   if (!textPart || !filePart) return print("Nutzung: echo TEXT > DATEI", "warn");
   const path = resolvePath(filePart);
   const meta = ensureParentDir(path);
-  if (!meta) return print("Dateipfad ungueltig.", "err");
+  if (!meta) return print("Dateipfad ungültig.", "err");
   meta.parent.children[meta.name] = { type: "file", content: textPart, mode: "644" };
   markAction("echo", path);
   persistState();
@@ -1149,7 +1149,7 @@ function cmdNano(arg) {
   const node = getNode(path);
 
   if (node && node.type !== "file") return print("nano kann nur Dateien bearbeiten.", "err");
-  if (node && !hasWriteAccess(node)) return print("Keine Schreibrechte fuer diese Datei.", "err");
+  if (node && !hasWriteAccess(node)) return print("Keine Schreibrechte für diese Datei.", "err");
 
   state.editor = {
     path,
@@ -1170,7 +1170,7 @@ function finishEditor(saveChanges) {
   const meta = splitFilePath(state.editor.path);
   if (!meta) {
     state.editor = null;
-    return print("Ungueltiger Dateipfad.", "err");
+    return print("Ungültiger Dateipfad.", "err");
   }
   const parent = getNode(meta.parentPath);
   if (!parent || parent.type !== "dir") {
@@ -1188,7 +1188,7 @@ function finishEditor(saveChanges) {
   }
   if (!hasWriteAccess(target)) {
     state.editor = null;
-    return print("Keine Schreibrechte fuer diese Datei.", "err");
+    return print("Keine Schreibrechte für diese Datei.", "err");
   }
 
   target.content = state.editor.buffer.join("\n");
@@ -1294,7 +1294,7 @@ function cmdUnlock(arg) {
   }
 
   if (word !== level.successWord) {
-    print(`Fast, ${playerAddress()}! Noch nicht richtig. Pruefe die Spuren erneut.`, "err");
+    print(`Fast, ${playerAddress()}! Noch nicht richtig. Prüfe die Spuren erneut.`, "err");
     return;
   }
 
@@ -1314,8 +1314,8 @@ function cmdUnlock(arg) {
   } else {
     print(`${playerAddress()}, alle Missionen abgeschlossen. Du bist jetzt CyberQuest ${titleByProgress(1)}!`, "ok");
     printPromotionIfNeeded(titleBeforeCompletion, titleByProgress(1));
-    print("Ben: 'Der Digitalschatten hat uns nicht angegriffen - er hat uns geprueft.'", "accent");
-    print("Frau Weber: 'Sicherheit heisst Verantwortung, nicht Chaos.'", "accent");
+    print("Ben: 'Der Digitalschatten hat uns nicht angegriffen - er hat uns geprüft.'", "accent");
+    print("Frau Weber: 'Sicherheit heißt Verantwortung, nicht Chaos.'", "accent");
     printFinalAsciiArt();
     print("Herzlichen Glückwunsch!", "muted");
     persistState();
@@ -1422,6 +1422,6 @@ if (saved) {
   startLevel(0);
   updateOnboardingVisibility();
   updateMusicButton();
-  print(`Willkommen im Cyber-Labor der Schule, ${playerAddress()}! Frau Weber und Ben zaehlen auf dich. Tippe help, um zu starten.`, "ok");
+  print(`Willkommen im Cyber-Labor der Schule, ${playerAddress()}! Frau Weber und Ben zählen auf dich. Tippe help, um zu starten.`, "ok");
 }
 cmd.focus();
