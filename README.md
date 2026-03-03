@@ -2,6 +2,10 @@
 
 CyberQuest: Terminal Scouts ist ein browserbasiertes Lernspiel für 9- bis 12-Jährige, in dem Kinder als Junior-Analysten im Cyber-Labor einer Schule spannende digitale Rätsel lösen. In einer kindgerechten Story rund um den geheimnisvollen Digitalschatten lernen sie Schritt für Schritt wichtige Linux-Terminalbefehle wie ls, cd, cat und grep kennen, stärken ihr Sicherheitsverständnis und erleben, dass Cyber Security vor allem Verantwortung bedeutet.
 
+## Jetzt ausprobieren
+
+- https://hacklikedemons.github.io/CyberQuest-Terminal-Scouts/
+
 ## Projektstruktur
 
 - `index.html`: App-Shell und UI-Markup
